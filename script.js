@@ -1,40 +1,20 @@
-// Import Firebase modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
-
-// Firebase configuration
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const firebaseConfig = {
-    apiKey: "AIzaSyCR7eWetjuJOIewzjgIYlvNGh95CFYrWZ8",
-    authDomain: "campusdash-4f77d.firebaseapp.com",
-    projectId: "campusdash-4f77d",
-    storageBucket: "campusdash-4f77d.firebasestorage.app",
-    messagingSenderId: "938612318478",
-    appId: "1:938612318478:web:2b074652fc377a1122b75f"
+  apiKey: "AIzaSyCV3CKuz4AUAjsAG8NCPEq0M_BN1vWGfwM",
+  authDomain: "webapp-a1ca3.firebaseapp.com",
+  projectId: "webapp-a1ca3",
+  storageBucket: "webapp-a1ca3.firebasestorage.app",
+  messagingSenderId: "171704310122",
+  appId: "1:171704310122:web:745d826833e81720ab6d13"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const rtdb = getDatabase(app);
+const email= document.getElementById('Name-input').value;
+const password= document.getElementById('Password-input').value;
+const submit= document.getElementById('submit-button').value;
+submit.addEventListener("click", function (event) {
 
+event.preventDefault()
+})
 
-document.addEventListener('DOMContentLoaded', function() {
-    const map = L.map('map').setView([40.7363, -73.8176], 17);
-    
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 17,
-        minZoom: 17,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-    
-    const halalMarker = L.marker(40.7360, 73.8160).addTo(map);
-    halalMarker.bindPopup("Halal Food Truck").openPopup();
-    
-
-    setTimeout(function() {
-        map.invalidateSize();
-    }, 300);
-});
