@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "customer.css" rel = "stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> 
+    <title>Customer Dashboard</title>
+</head>
+<body>
+    <div class = "main-customer">
+        <div class = "navbar">
+            <div class = "left">
+                <div class = "logo"><a href = "index.html"><img src = "/images/CampusDashLogo.png"></a></div>
+            </div>
+            <div class = "right">
+                <div class = "main-buttons">
+                    <a href = "signup.html"><button class = "log-in">Sign Out</button></a>
+                </div>
+            </div>
+        </div>
+        <div class = "customer-panel">
+            <div id = "map">
+                
+            </div>
+        </div>
+    </div>
+    <div class="card-container">
+        <div class="card">
+            <img src="https://www.theknightnews.com/wp-content/uploads/2023/11/Au-Bon-Pain.png" alt="Image of Science Building Cafe" class="card-image">
+            <div class="card-content">
+                <h2>Science Building Cafe</h2>
+                <p>⏰ 9:00 AM - 5:00 PM on Weekdays</p>
+                <p>📍 Science Building Second Floor</p>
+                <p>🍽️ Hot and cold beverages, fruit smoothies, soups, salads, and sandwiches</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.theknightnews.com/wp-content/uploads/2024/10/QC-Campus-Eats-scaled.jpg" alt="Image of QC Campus Eats" class="card-image">
+            <div class="card-content">
+                <h2>QC Campus Eats</h2>
+                <p>⏰ 7:00 AM - 7:00 PM on Weekdays</p>
+                <p>📍 Dining Hall</p>
+                <p>🍽️ Sandwiches, Burgers, New York Style Deli Food</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://pbs.twimg.com/media/GkBlxeRXsAAcbWl.jpg" alt="Mama Kitchen Image" class="card-image">
+            <div class="card-content">
+                <h2>
+                    <a href="https://www.instagram.com/mamakitchenny/?hl=en" target="_blank">Mama's Kitchen</a>
+                </h2>
+                <p>⏰ Not Provided</p>
+                <p>📍 Dining Hall</p>
+                <p>🍽️ Kosher Israeli Food</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://s3-media0.fl.yelpcdn.com/bphoto/_dlhVibdreZFjDRVu-iHwg/348s.jpg" alt="Taiwanese Yummy pop-up shop image" class="card-image">
+            <div class="card-content">
+                <h2>Taiwanese Yummy</h2>
+                <p>⏰ 10:00 AM - 3:00 PM on Tuesdays, Wednesdays, and Thursdays</p>
+                <p>📍 Dining Hall & Student Union</p>
+                <p>🍽️ Authentic Taiwanese Food</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://pbs.twimg.com/media/GjmWQcVWMAAi7DJ.jpg" alt="Food Truck Image" class="card-image">
+            <div class="card-content">
+                <h2>Reem’s Grillhouse</h2>
+                <p>⏰ Not Provided</p>
+                <p>📍 Dining Hall</p>
+                <p>🍽️ HMS-certified Halal</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwqPvdzqRzGFtIgHUmHA12QkPUthS81DAVEg&s" alt="Tealicious Image" class="card-image">
+            <div class="card-content">
+                <h2>
+                    <a href="https://www.instagram.com/tealicious.nyc/" target="_blank">Tealicious</a>
+                </h2>
+                <p>⏰ Not Provided</p>
+                <p>📍 Dining Hall & Student Union</p>
+                <p>🍽️ Bubble Teas, Fruit Teas, Milkshakes, Crepes, Waffles, and Ice Cream</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.theknightnews.com/wp-content/uploads/2015/12/IMG_7297.jpg" alt="Halal Food Truck Image" class="card-image">
+            <div class="card-content">
+                <h2>Halal Food Truck</h2>
+                <p>⏰ Not Provided</p>
+                <p>📍 On Quad between Kiely Hall & Virginia Frese</p>
+                <p>🍽️ Authentic New York Style Halal Food</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH85F88yKj7I1aCWtWYXVzLTUr5FQ0BcryTQ&s" alt="Mr. Sandwich Food Truck Image" class="card-image">
+            <div class="card-content">
+                <h2>
+                    <a href="https://www.instagram.com/mr.sandwichnyc/?hl=en" target="_blank">Mr. Sandwich Food Truck</a>
+                </h2>
+                <p>⏰ 9:30 AM - 5:30 PM on Weekdays</p>
+                <p>📍 On Quad between Kiely Hall & Virginia Frese</p>
+                <p>🍽️ Sandwiches, Burgers, New York Style Deli Food</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://www.theknightnews.com/wp-content/uploads/2023/09/Empanadas_FoodCart.jpeg" alt="Empanada Food Truck Image" class="card-image">
+            <div class="card-content">
+                <h2>Empanada Food Truck</h2>
+                <p>⏰ 6:00 AM - 7:00 PM on Weekdays</p>
+                <p>📍 On Quad between Kiely Hall & Virginia Frese</p>
+                <p>🍽️ Authentic Colombian Meals and Sides</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://live.staticflickr.com/65535/53315367060_16cfca2e1b_b.jpg" alt="Waffle Food Truck Image" class="card-image">
+            <div class="card-content">
+                <h2>
+                    <a href="https://wafels.com/?srsltid=AfmBOooXL3bwk3fm-3VmtamriemzwKe1PwouAut4aDMS8gV3AAJGDPWy">Waffe & Dingles Food Cart</a> 
+                </h2>
+                <p>⏰ 9:30 AM - 6:00 PM on Weekdays</p>
+                <p>📍 On Quad near Science Build Enterance</p>
+                <p>🍽️ Variety of sweet treats in the form of decorated waffles (ice cream, syrup)</p>
+            </div>
+        </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

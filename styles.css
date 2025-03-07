@@ -12,9 +12,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     background-image: url(https://cdn.dribbble.com/userupload/20256996/file/original-928bbc129c2655700e6c045af03eaf1c.gif);
-    background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
     /* background-color: #FFEEEE; */
     justify-content: center;
     align-items: center;
