@@ -8,20 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
     
-    const halalMarker = L.marker([40.735579030960345, -73.8168977355432]).addTo(map);
-    halalMarker.bindPopup("Halal Food Truck", {
+    const halalMarker = L.marker([40.73557935806131, -73.81675414772432]).addTo(map);
+    halalMarker.bindPopup("Halal Truck | Empanada Truck | Mr. Sandwich Cart", {
         autoClose: false,
         closeOnClick: false
     });
     
-    const scienceBuildingCafe = L.marker([40.73524642433489, -73.82025639151054]).addTo(map);
-    scienceBuildingCafe.bindPopup("Science Building Cafe", {
+    const scienceBuildingCafe = L.marker([40.734921532317024, -73.82033040527723]).addTo(map);
+    scienceBuildingCafe.bindPopup("Science Cafe", {
         autoClose: false,
         closeOnClick: false
     });
 
     const qcCampusEats = L.marker([40.737234, -73.817224]).addTo(map);
-    qcCampusEats.bindPopup("QC Campus Eats", {
+    qcCampusEats.bindPopup("QC Campus Eats | Mama Kitchen | Taiwanese Yummy | Reem's Grillhouse | Tealicious", {
         autoClose: false,
         closeOnClick: false
     });
@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
         autoClose: false,
         closeOnClick: false
     });
+
+    const tealicious = L.marker([40.73430554184099, -73.81600222646458]).addTo(map);
+    tealicious.bindPopup("Taiwanese Yummy | Tealicious | General Deli", {
+        autoClose: false,
+        closeOnClick: false
+    })
     
     // Open all popups
     map.eachLayer(function(layer) {
@@ -42,3 +48,4 @@ document.addEventListener('DOMContentLoaded', function() {
         map.invalidateSize();
     }, 300);
 });
+

@@ -8,9 +8,11 @@
 #map {
     display: flex;  
     height: 600px;
-    width: 900px;
+    width: 860px;
     top: 50px;
     cursor: default;
+    border: 4px solid white;
+    border-radius: 2em;
 }
 
 .main-customer {
@@ -116,9 +118,6 @@ body {
     color: black;
     transform: scale(1.05);
 }
-
-
-
 /* Card Container */
 .card-container {
     display: flex;
@@ -228,6 +227,10 @@ body {
 
     .card-content p {
         font-size: 20px; /* Bigger text on mobile */
+    }
+    #map {
+        height: 300px;
+        width: 550px;
     }
 }
 
