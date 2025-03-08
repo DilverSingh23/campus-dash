@@ -25,7 +25,7 @@ CampusDash is our **MVP** submission for **Hack Knight Spring 2025**, designed t
 ## 🛠 Tech Stack  
 
 - **Frontend:** HTML, CSS, JavaScript  
-- **Mapping:** Leaflet.js for interactive campus map  
+- **Mapping:** OpenStreetMap API Leaflet.js for interactive campus map  
 - **Authentication & Database:** Google Firebase  
 - **Backend:** Firebase Firestore for storing users, orders, and delivery statuses  
 
