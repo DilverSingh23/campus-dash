@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, fetchSignInMethodsForEmail } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getFirestore, collection, getDocs, addDoc, serverTimestamp} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -131,72 +131,141 @@ if (signUpBtn && signUpEmail && signUpPassword) {
 }
 
 // Handle login (only on login page)
-const loginEmail = document.getElementById("login-email");
-const loginPassword = document.getElementById("login-password");
+const loginForm = document.getElementById("login-form");
 const loginBtn = document.getElementById("login-btn");
 
-if (loginBtn && loginEmail && loginPassword) {
-  loginBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value);
-      window.location.href = "index.html";
-    } catch(error) {
-      console.error("Login error:", error.message);
-      alert("Invalid email or password. Please try again.");
-    }
+console.log("Login form initialization", { 
+  formExists: !!loginForm, 
+  buttonExists: !!loginBtn 
+});
+
+const handleLogin = async (event) => {
+  console.log("Login form submitted");
+  event.preventDefault(); 
+  const loginEmail = document.getElementById("login-email").value;
+  const loginPassword = document.getElementById("login-password").value;
+  const email = loginEmail.trim();
+  const password = loginPassword.trim(); 
+  
+  console.log("Form values", { 
+    emailElement: document.getElementById("login-email"),
+    passwordElement: document.getElementById("login-password"),
+    email: email, 
+    password: password ? "[REDACTED]" : "" 
   });
+  
+  if(!email || !password){
+    console.log("Validation failed: Empty email or password");
+    showAlert("Please enter both email and password.");
+    return;
+  }
+  
+  try {
+    console.log("Attempting Firebase sign in with email:", email);
+    
+    // Check if auth and other Firebase objects exist
+    console.log("Firebase objects", { 
+      authExists: !!auth, 
+      dbExists: !!db,
+      signInFunctionExists: typeof signInWithEmailAndPassword === 'function'
+    });
+    
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    console.log("Login successful", { uid: userCredential.user.uid });
+    const user = userCredential.user;
+    window.location.href = "index.html";
+  }
+  catch(error) {
+    console.error("Login error:", error);
+    console.log("Error details", { 
+      code: error.code, 
+      message: error.message 
+    });
+    
+    let errorMessage = "Login failed. Please try again.";
+
+    if (error.code === "auth/wrong-password") {
+      errorMessage = "Incorrect password. Please try again.";
+    } else if (error.code === "auth/user-not-found") {
+      errorMessage = "No user found with this email.";
+    } else if (error.code === "auth/invalid-email") {
+      errorMessage = "Invalid email format.";
+    } else if (error.code === "auth/too-many-requests") {
+      errorMessage = "Too many failed login attempts. Please try again later.";
+    }
+    
+    console.log("Showing alert:", errorMessage);
+    showAlert(errorMessage);
+  }
+};
+
+// Check if showAlert function exists
+console.log("showAlert function exists:", typeof showAlert === 'function');
+
+if (loginForm) {
+  console.log("Adding event listener to login form");
+  loginForm.addEventListener("submit", handleLogin);
+} else {
+  console.error("Login form element not found in the document");
+  // Try to find why the form might not be found
+  console.log("All forms in document:", document.querySelectorAll("form"));
+  console.log("Element with ID 'login-form':", document.getElementById("login-form"));
 }
 
-// Handle order form submission
+// Log when the script has finished executing
+console.log("Login script loaded and configured");
+  
+
+   
+
+// if (loginEmail && loginPassword ) {
+//   loginBtn.addEventListener("click", async (e) => {
+//     e.preventDefault();
+//     try {
+//       const userCredential = await signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value);
+//       if(db.signUpEmai && db.signUpPassword === loginEmail && loginBtn)
+//         window.location.href = "index.html";
+//     } catch(error) {
+//       console.error("Login error:", error.message);
+//       alert("Invalid email or password. Please try again.");
+//     }
+//   });
+//  }
+ 
+// Handle order form submission (only if the form exists)
 const orderForm = document.getElementById("dash-order-form");
 
 if (orderForm) {
-  orderForm.addEventListener("submit", async (e) => {
-    e.preventDefault(); // Prevents page from being refreshed 
+  // Get form input elements
+  const customerContact = document.getElementById("ticketInput-customerContact");
+  const customerName = document.getElementById("ticketInput-customerName");
+  const deliveryLocation = document.getElementById("ticketInput-deliveryLocation");
+  const order = document.getElementById("ticketInput-order");
+  const orderLocation = document.getElementById("ticketInput-orderLocation");
+  const profit = document.getElementById("ticketInput-profit");
+  const status = "Pending";
 
-    // Check if user is logged in
-    const user = auth.currentUser;
-    if (!user) {
-      alert("Please login to submit an order");
-      return;
-    }
-
-    // Get all the input fields
-    const customerContact = document.getElementById("ticketInput-customerContact");
-    const customerName = document.getElementById("ticketInput-customerName");
-    const deliveryLocation = document.getElementById("ticketInput-delieveryLocation");
-    const order = document.getElementById("ticketInput-order");
-    const orderLocation = document.getElementById("ticketInput-orderLocation");
-    const profit = document.getElementById("ticketInput-profit");
-
-    // Check if all fields exist and have values
-    if (!customerContact || !customerName || !deliveryLocation || !order || !orderLocation || !profit) {
-      alert("Please fill all required fields");
-      return;
-    }
-
-    // JSON object that takes data from the form and passes it to Firestore database
-    const orderData = {
-      customerContact: customerContact.value,
-      customerName: customerName.value,
-      deliveryLocation: deliveryLocation.value,
-      order: order.value,
-      orderLocation: orderLocation.value,
-      profit: profit.value,
-      status: "Pending",
-      timestamp: serverTimestamp()
-    };
-
+  orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
     try {
-      // Add document to the tickets collection
-      await addDoc(collection(db, "tickets","tickets-input"), orderData);
-      alert("Order placed successfully!");
-      orderForm.reset(); // Clear form fields after submission
+      // Use the imported addDoc function with collection reference
+      await addDoc(collection(db, "tickets"), {
+        name: customerName.value,
+        contact: customerContact.value,
+        orderLocation: orderLocation.value,
+        order: order.value,
+        deliveryLocation: deliveryLocation.value,
+        profit: profit.value,
+        createdAt: serverTimestamp()
+      });
+      
+      console.log("Order submitted successfully");
+      orderForm.reset();
+      alert("Order submitted successfully!");
     } catch (error) {
-      console.error("Error adding order: ", error);
-      alert("Failed to place order. Error: " + error.message);
+      console.error("Error submitting order:", error);
+      alert("Error submitting order: " + error.message);
     }
   });
 }
-
