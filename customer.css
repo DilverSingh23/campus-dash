@@ -1,14 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 .customer-panel{
     width: 100%;    
     margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 #map {
     display: flex;  
     height: 600px;
-    width: 860px;
+    width: 890px;
     top: 50px;
     cursor: default;
     border: 4px solid white;
@@ -61,7 +69,7 @@
     gap: 1rem;
 }
 
-.main-buttons button {
+.main-buttons button, .cta-button {
     border-radius: 2em;
     border: 1px solid black;
     padding: 0.75em 2em;
@@ -71,6 +79,39 @@
     font-size: clamp(0.8rem, 1vw, 1rem);
     font-family: 'Inter';
     font-weight: 700;
+}
+
+.cta-button {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 2px solid red;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+
+.cta-button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.main-buttons button:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: transparent;
+    color: white;
+}
+
+
+.cta-button:not(:hover){
+    transition: 0.5s;
+    background-color: red;
+    color: white;
 }
 
 .main-buttons button:hover {
@@ -87,8 +128,8 @@
 }
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
+    font-family: 'Inter', sans-serif;
+    background-color: #1A1A1A;
     color: white;
     margin: 0;
     padding: 30px; /* Increased padding */
@@ -97,6 +138,7 @@ body {
     align-items: center;
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
     gap: 5em;
+
 }
 
 /* Theme Toggle Button */
@@ -198,6 +240,134 @@ body {
     color: white;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* Order Form Styling */
+#order-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #E3242B;
+    border-radius: 2em;
+    align-items: center;
+    border: 2px solid white;
+    padding: 2em;
+    width: 90%;
+    max-width: 800px;
+    margin: 2em auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.order-top {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid white;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.order-top h1 {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+
+#order-form img {
+    background-color: white;
+    border-radius: 1em;
+    width: 250px;
+    height: auto;
+}
+
+.order-content {
+    width: 100%;
+}
+
+#dash-order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.form-group label {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.8em 1em;
+    border: none;
+    border-radius: 0.8em;
+    font-family: 'Inter', sans-serif;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1em center;
+    background-size: 1em;
+    padding-right: 2.5em;
+}
+
+.order-submit {
+    background-color: white;
+    color: #E3242B;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1em;
+    padding: 0.8em 1.5em;
+    border: 2px solid white;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+    margin-top: 1em;
+    width: 50%;
+}
+
+.order-submit:hover {
+    background-color: transparent;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .order-top {
+        flex-direction: column;
+        gap: 1em;
+    }
+    
+    #order-form {
+        padding: 1.5em;
+    }
+    
+    .order-submit {
+        width: 100%;
+    }
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

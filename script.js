@@ -1,39 +1,32 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 
-// Firebase Configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCV3CKuz4AUAjsAG8NCPEq0M_BN1vWGfwM",
-  authDomain: "webapp-a1ca3.firebaseapp.com",
-  projectId: "webapp-a1ca3",
-  storageBucket: "webapp-a1ca3.appspot.com",
-  messagingSenderId: "171704310122",
-  appId: "1:171704310122:web:745d826833e81720ab6d13"
-};
+    apiKey: "AIzaSyCR7eWetjuJOIewzjgIYlvNGh95CFYrWZ8",
+    authDomain: "campusdash-4f77d.firebaseapp.com",
+    projectId: "campusdash-4f77d",
+    storageBucket: "campusdash-4f77d.firebasestorage.app",
+    messagingSenderId: "938612318478",
+    appId: "1:938612318478:web:2b074652fc377a1122b75f"
+  };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); // Initialize Authentication
 
-// Get the form and submit button
-const form = document.getElementById("signup-form");
+const auth = getAuth(app);
 
-// Listen for form submission
-form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent form from reloading the page
+const name = document.getElementById("name-input");
+const email = document.getElementById("email-input");
+const password = document.getElementById("password-input"); 
+const signUpBtn =  document.getElementById("signup-btn"); 
 
-  // Get user input values
-  const email = document.getElementById("Name-input").value;
-  const password = document.getElementById("Password-input").value;
-
-  // Firebase Authentication: Create User
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      alert("User created successfully!");
-      window.location.href = "index.html"; // Redirect after signup
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-});
+const signUpButtonPressed = async (e) => {
+  e.preventDefault(); 
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value);
+    console.log(userCredential);
+  } catch (error) {
+    console.log(error.code);
+  }
+}
+signUpBtn.addEventListener("click",signUpButtonPressed);

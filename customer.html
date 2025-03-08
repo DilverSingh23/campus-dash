@@ -15,12 +15,14 @@
                 <div class = "logo"><a href = "index.html"><img src = "/images/CampusDashLogo.png"></a></div>
             </div>
             <div class = "right">
-                <div class = "main-buttons">
+                <div class = "main-buttons">    
                     <a href = "signup.html"><button class = "log-in">Sign Out</button></a>
                 </div>
             </div>
         </div>
+
         <div class = "customer-panel">
+            <a href= "#order-form" class="cta-button">Make Your Order</a>
             <div id = "map"></div>
         </div>
     </div>
@@ -71,7 +73,7 @@
         <div class="card">
             <img src="https://pbs.twimg.com/media/GjmWQcVWMAAi7DJ.jpg" alt="Food Truck Image" class="card-image">
             <div class="card-content">
-                <h2>Reem’s Grillhouse</h2>
+                <h2>Reem's Grillhouse</h2>
                 <p>⏰ Not Provided</p>
                 <p>📍 Dining Hall</p>
                 <p>🍽️ HMS-certified Halal</p>
@@ -135,6 +137,56 @@
                 <p>🍽️ Variety of sweet treats in the form of decorated waffles (ice cream, syrup)</p>
             </div>
         </div>
+
+        <div id="order-form">
+            <div class="order-top">
+                <img src="\images\CampusDashTL.png">
+                <h1>Request a Dasher</h1>
+            </div>
+            <div class="order-content">
+                <form id="dash-order-form">
+                    <div class="form-group">
+                        <label for="customer-name">Your Name</label>
+                        <input type="text" id="customer-name" name="customer-name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" name="phone-number" placeholder="(XXX) XXX-XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Delivery Location</label>
+                        <input type="text" id="location" name="location" placeholder="Where should we deliver?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="food-spot">Food Location</label>
+                        <select id="food-spot" name="food-spot" required>
+                            <option value="" disabled selected>Select a location</option>
+                            <option value="Science Building Cafe">Science Building Cafe</option>
+                            <option value="QC Campus Eats">QC Campus Eats</option>
+                            <option value="Mama's Kitchen">Mama's Kitchen</option>
+                            <option value="Taiwanese Yummy">Taiwanese Yummy</option>
+                            <option value="Reem's Grillhouse">Reem's Grillhouse</option>
+                            <option value="Tealicious">Tealicious</option>
+                            <option value="Halal Food Truck">Halal Food Truck</option>
+                            <option value="Mr. Sandwich Food Truck">Mr. Sandwich Food Truck</option>
+                            <option value="Empanada Food Truck">Empanada Food Truck</option>
+                            <option value="Waffe & Dingles Food Cart">Waffe & Dingles Food Cart</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="order-details">Order Details</label>
+                        <textarea id="order-details" name="order-details" placeholder="Enter your order details here..." rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="order-submit">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="customer.js"></script>
 </body>
 </html>
