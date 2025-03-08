@@ -1,146 +1,10 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'); */
-/* body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-image: url(https://cdn.dribbble.com/userupload/20256996/file/original-928bbc129c2655700e6c045af03eaf1c.gif);
-    background-position: center;
-    font-family: 'Inter';
-} */
-
-/* .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    max-width: 400px; 
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-
-}
-
-.logo img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 5px;
-}
-
-form {
-    width: 100%;
-}
-
-.input {
-    display: flex;
-    align-items: center;
-    background: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.input label {
-    margin-right: 10px;
-}
-
-input {
-    border: none;
-    background: transparent;
-    flex: 1;
-    outline: none;
-    padding: 5px;
-}
-
-#submit-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0073ea;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-#submit-button:hover {
-    background-color: #005bb5;
-}
-
-
-p {
-    margin-top: 15px;
-}
-
-p a {
-    color: #0073ea;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.submit{
-    background: none; 
-    padding: 0px; 
-    border: none; 
-    text-align: center; 
-    display: inline-flex;
-    gap: 10px;
-    width: 100%;
-   
-}
-.google-login {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.google-login {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    
-}
-
-#google-button {
-    display: flex;
-    align-items: center;
-    gap: 10px; 
-    background: white;
-    justify-content: center;
-    color: #757575;
-    font-weight: bold;
-    border: 1px solid #ddd;
-    font-size: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-     cursor: pointer;
-     width: 100%; 
-    
-}
-
-#google-button svg {
-    width: 24px; 
-    height: 24px
-  
-    
-}
-
-#google-button:hover {
-    background: #f7f7f7;
-} */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  body {
+}
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -150,13 +14,54 @@ p a {
     background-position: center;
     font-size: 20px;
 }
-  .signup-container {
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  z-index: -1; 
+}
+.back-btn {
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  text-decoration: none;
+  font-size: 35px;
+  font-weight: 600;
+  color: white; 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.5s, transform 0.2s;
+}
+
+.back-btn i {
+  font-size: 40px; 
+}
+
+.back-btn:hover {
+  color: #a11d1d; 
+  transform: translateX(-3px); 
+}
+
+.back-btn:active {
+  color: #791414; 
+  transform: translateX(-1px);
+}
+
+.signup-container {
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     width: 800px;
     padding: 30px;
-  }
+}
   
   .logo-container {
     text-align: center;
@@ -204,7 +109,34 @@ p a {
     top: 39px;
     color: #888;
   }
+
+  .role-btn-container {
+    display: flex;
+    gap: 10px; 
+    width: 100%;
+    margin-bottom: 20px;
+  } 
+  .role-btn {
+    flex: 1; 
+    padding: 12px;
+    background-color: #b22222; 
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+  }
   
+  .role-btn:hover {
+    background-color: #a11d1d; 
+  }
+  
+  .role-btn:active {
+    background-color: #911818; 
+  }
   .signup-btn {
     width: 100%;
     padding: 12px;
@@ -240,4 +172,13 @@ p a {
   
   .terms a:hover {
     text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .signup-container{
+      max-width: 500px;
+    }
+    img {
+      max-width: 300px;
+    }
   }

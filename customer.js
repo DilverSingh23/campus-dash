@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         closeOnClick: false
     })
     
-    // Open all popups
     map.eachLayer(function(layer) {
         if (layer instanceof L.Marker) {
             layer.openPopup();

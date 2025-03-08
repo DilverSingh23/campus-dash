@@ -13,7 +13,6 @@ body {
     overflow-x: hidden;
     background-image: url(https://cdn.dribbble.com/userupload/20256996/file/original-928bbc129c2655700e6c045af03eaf1c.gif);
     background-position: center;
-    /* background-color: #FFEEEE; */
     justify-content: center;
     align-items: center;
 }
@@ -57,6 +56,10 @@ body {
     padding: 0;
 }
 
+#sign-out {
+    display: none;
+}
+
 .main-buttons {
     display: flex;
     gap: 1rem;
@@ -71,6 +74,15 @@ body {
     font-size: clamp(0.8rem, 1vw, 1rem);
     font-family: 'Inter';
     font-weight: 700;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+#enter {
+    display: none;
 }
 
 .main-buttons button:hover {

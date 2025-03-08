@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.map-container {
+    flex: 1;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    position: relative;
+}
+
+.map-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 120px;
+    z-index: 10; 
+}
+
+.ticket-container {
+    flex: 1;
+    background-color: #000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.ticket-header {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.ticket-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    color: black;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-info {
+    flex-grow: 1;
+}
+
+.ticket-field {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ticket-value {
+    font-weight: normal;
+}
+
+.no-tickets {
+    color: #444;
+    font-size: 24px;
+    text-align: center;
+    margin: auto;
+}
+
+.ticket-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-accept {
+    background-color: #6ba368;
+}
+
+.btn-decline {
+    background-color: #a15b43;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column-reverse; 
+        height: auto;
+        overflow: auto;
+    }
+    
+    .map-container, .ticket-container {
+        flex: none;
+        width: 100%;
+    }
+    
+    .map-container {
+        height: 50vh; 
+    }
+    
+    .map-container img {
+        width: 120%; 
+        height: 120%;
+    }
+    
+    .ticket-container {
+        min-height: 50vh;
+    }
+    
+    .ticket-header {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .ticket-field {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ticket-container {
+        padding: 15px;
+    }
+    
+    .ticket-card {
+        padding: 15px;
+    }
+    
+    .ticket-header {
+        font-size: 24px;
+    }
+    
+    .ticket-field {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 18px;
+    }
+    
+    .map-container img {
+        width: 130%; 
+        height: 130%;
+    }
+}

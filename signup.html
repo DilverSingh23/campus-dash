@@ -1,54 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="signup.css" rel="stylesheet">
-    <title>Signup</title>
-</head>
-<body>  
-    <div class="container">
-        <div class="logo">
-            <img src="/images/CampusDashTL.png" alt="CampusDash Logo">
-        </div>
-        <form id="signup-form">
-            <div class="form">
-                <h2>Sign Up</h2>
-                <div class="input">
-                    <label for="Name-input">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                            <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/>
-                        </svg>
-                    </label>
-                    <input type="text" name="Name" id="name-input" placeholder="Name" required>
-                </div>
-                
-                <div class="input">
-                    <label for="Email-input">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                            <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280 320-200v-80L480-520 160-720v80l320 200Z"/>
-                        </svg>
-                    </label>
-                    <input type="email" name="Email" id="email-input" placeholder="Email" required>
-                </div>
-                
-                <div class="input">
-                    <label for="Password-input">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                            <path d="M80-200v-80h800v80H80Zm46-242-52-30 34-60H40v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Zm320 0-52-30 34-60h-68v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Zm320 0-52-30 34-60h-68v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Z"/>
-                        </svg>
-                    </label>
-                    <input type="password" name="Password" id="password-input" placeholder="Password" required>
-                </div>
-                <div class="submit">
-                    <button type="submit" id="signup-btn">Sign up</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,9 +8,11 @@
   <link rel="stylesheet" href="signup.css">
 </head>
 <body>
+  <a href="index.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
   <div class="signup-container">
     <div class="logo-container">
-      <!-- Replace with your logo -->
       <img src="images/CampusDashTL.png" alt="Product Logo">
     </div>
     
@@ -94,6 +45,15 @@
           autocomplete="new-password"
         >
       </div>
+      <label for="email-input" class="form-label">Chose Your Role</label>
+      <div class = "role-btn-container">
+        <button type="button" id="customer-btn" class="role-btn">
+          Customer
+        </button>
+        <button type="button" id="dasher-btn" class="role-btn">
+          Dasher
+        </button>
+      </div>
       
       <button type="submit" id="signup-btn" class="signup-btn">
         <i class="fas fa-user-plus"></i> Sign Up
@@ -104,5 +64,6 @@
       By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
     </p>
   </div>
+  <script src = "script.js" type="module"></script>
 </body>
 </html>

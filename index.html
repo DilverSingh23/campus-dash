@@ -14,9 +14,10 @@
                 <div class = "logo"><a href = "index.html"><img src = "/images/CampusDashLogo.png"></a></div>
             </div>
             <div class = "right">
-                <div class = "main-buttons">
+                <div class = "main-buttons" id = "nav-buttons">
                     <a href = "signup.html"><button class = "log-in">Sign Up</button></a>
                     <a href = "login.html"><button class = "log-in">Log In</button></a>
+                    <button class = "log-in" id = "sign-out">Sign Out</button>
                 </div>
             </div>
         </div>
@@ -26,18 +27,16 @@
                 <h1>Your <span class = "underline">UberEats</span> for <span class = "red">College Cravings</span></h1>
                 <div class = "main-buttons" id = "landing-buttons">
                     <a href="customer.html">
-                        <button>Feed Your Cravings 🍔</button>
+                        <button id = "cravings-cta">Feed Your Cravings 🍔</button>
                     </a>
-                    <button>Become a Dasher 💰</button>
+                    <a href="dasher.html"> 
+                        <button id = "dasher-cta">Become a Dasher 💰</button>
+                    </a>
+                    <button id = "enter">Enter</button>
                 </span>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>

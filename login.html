@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href = "signup.css" rel = "stylesheet">
-    <script type=" module" src="script.js" defer></script>
-    <title>Signup</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusDash - Log In</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="signup.css">
 </head>
-
-<body>  
-    <div class="container">
-
-
-    <div class="logo">
-        <img src="/images/CampusDashTL.png" alt="CampusDash Logo">
+<body>
+  <a href="index.html" class="back-btn">
+    <i class="fas fa-arrow-left"></i> Back
+  </a>
+  <div class="signup-container">
+    <div class="logo-container">
+      <img src="images/CampusDashTL.png" alt="Product Logo">
     </div>
     
-    <form>
-        <div class="form">
-            <h2>Login</h2>
-            
-            <div class="input">
-                <label for="Name-input"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                        <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/>
-                    </svg>
-                </label>
-                <input type="text" name="Name" id="Name-input" placeholder="Name" required>
-            </div>
-            
-           
-            <div class="input">
-                <label for="Password-input">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
-                        <path d="M80-200v-80h800v80H80Zm46-242-52-30 34-60H40v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Zm320 0-52-30 34-60h-68v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Zm320 0-52-30 34-60h-68v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Z"/>
-                    </svg>
-                </label>
-                <input type="password" name="Password" id="Password-input" placeholder="Password" required>
-            </div>
-            
-           
-                <div class="submit">
-                    <button type="submit" id="submit-button">Sign up</button>
-                    
-                </div>
-                <div class="google-login">
-                    <button id="google-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
-                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
-                            </svg>
-                        Continue with Google
-                    </button>
-                </div>
-                
-            </div>
-        </div>
+    <h1 class="form-title">Log Into An Existing Account</h1>
+    
+    <form id="signup-form">
+      <div class="form-group">
+        <label for="email-input" class="form-label">Email Address</label>
+        <i class="input-icon fas fa-envelope"></i>
+        <input 
+          type="email" 
+          id="login-email" 
+          class="form-input" 
+          placeholder="Enter your email (johndoe@gmail.com)" 
+          required 
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="password-input" class="form-label">Password</label>
+        <i class="input-icon fas fa-lock"></i>
+        <input 
+          type="password" 
+          id="login-password" 
+          class="form-input" 
+          placeholder="Enter your password" 
+          required 
+        >
+      </div>
+      
+      <button type="submit" id="signup-btn" class="signup-btn">
+       Sign In
+      </button>
     </form>
- </div>
+  </div>
+  <script src = "script.js" type="module"></script>
 </body>
 </html>
