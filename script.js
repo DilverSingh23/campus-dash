@@ -134,54 +134,24 @@ if (signUpBtn && signUpEmail && signUpPassword) {
 const loginForm = document.getElementById("login-form");
 const loginBtn = document.getElementById("login-btn");
 
-console.log("Login form initialization", { 
-  formExists: !!loginForm, 
-  buttonExists: !!loginBtn 
-});
-
 const handleLogin = async (event) => {
-  console.log("Login form submitted");
   event.preventDefault(); 
   const loginEmail = document.getElementById("login-email").value;
   const loginPassword = document.getElementById("login-password").value;
   const email = loginEmail.trim();
   const password = loginPassword.trim(); 
   
-  console.log("Form values", { 
-    emailElement: document.getElementById("login-email"),
-    passwordElement: document.getElementById("login-password"),
-    email: email, 
-    password: password ? "[REDACTED]" : "" 
-  });
-  
   if(!email || !password){
-    console.log("Validation failed: Empty email or password");
-    showAlert("Please enter both email and password.");
+    alert("Please enter both email and password.");
     return;
   }
   
   try {
-    console.log("Attempting Firebase sign in with email:", email);
-    
-    // Check if auth and other Firebase objects exist
-    console.log("Firebase objects", { 
-      authExists: !!auth, 
-      dbExists: !!db,
-      signInFunctionExists: typeof signInWithEmailAndPassword === 'function'
-    });
-    
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    console.log("Login successful", { uid: userCredential.user.uid });
     const user = userCredential.user;
     window.location.href = "index.html";
   }
   catch(error) {
-    console.error("Login error:", error);
-    console.log("Error details", { 
-      code: error.code, 
-      message: error.message 
-    });
-    
     let errorMessage = "Login failed. Please try again.";
 
     if (error.code === "auth/wrong-password") {
@@ -194,27 +164,13 @@ const handleLogin = async (event) => {
       errorMessage = "Too many failed login attempts. Please try again later.";
     }
     
-    console.log("Showing alert:", errorMessage);
-    showAlert(errorMessage);
+    alert(errorMessage);
   }
 };
 
-// Check if showAlert function exists
-console.log("showAlert function exists:", typeof showAlert === 'function');
-
 if (loginForm) {
-  console.log("Adding event listener to login form");
   loginForm.addEventListener("submit", handleLogin);
-} else {
-  console.error("Login form element not found in the document");
-  // Try to find why the form might not be found
-  console.log("All forms in document:", document.querySelectorAll("form"));
-  console.log("Element with ID 'login-form':", document.getElementById("login-form"));
 }
-
-// Log when the script has finished executing
-console.log("Login script loaded and configured");
-  
 
    
 
