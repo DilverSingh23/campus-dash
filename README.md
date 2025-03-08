@@ -8,7 +8,7 @@ CampusDash is our **MVP** submission for **Hack Knight Spring 2025**, designed t
 
 ### 🛒 **For Customers (Ordering Food)**  
 1. **Sign in** with Google authentication.  
-2. Choose a food spot from a **campus map (powered by Leaflet.js)** or a list of available vendors.  
+2. Choose a food spot from a **campus map (powered by Openstreetmap and Leaflet.js)** or a list of available vendors.  
 3. Enter your **order details**, **delivery location (building & room)**, and set a **minimum tip** for the delivery.  
 4. A **ticket** is created, which expires if not claimed within a set time.  
 5. Track your order and receive **real-time status updates** when a delivery is accepted.  
