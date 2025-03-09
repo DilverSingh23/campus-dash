@@ -156,10 +156,38 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="location">Delivery Location</label>
-                        <input type="text" id="ticketInput-deliveryLocation" name="location" placeholder="Where should we deliver?" required>
+                        <label for="location">Delivery Location (Building Name)</label>
+                        <select id="ticketInput-deliveryLocation" name="location" required>
+                            <option value="" disabled selected>Select the building you are in</option>
+                            <option value="Alumni Hall">Alumni Hall</option>
+                            <option value="Cambell Dome">Campbell Dome</option>
+                            <option value="Colden Auditorium">Colden Auditorium</option>
+                            <option value="Colwin Hall">Colwin Hall</option>
+                            <option value="Delany Hall">Delany Hall</option>
+                            <option value="Dining Hall">Dining Hall</option>
+                            <option value="FitzGerald Gym">FitzGerald Gym</option>
+                            <option value="Frese Hall">Frese Hall</option>
+                            <option value="Goldstein Theatre">Goldstein Theatre</option>
+                            <option value="Honors Hall">Honors Hall</option>
+                            <option value="Jefferson Hall">Jefferson Hall</option>
+                            <option value="Kiely Hall">Kiely Hall</option>
+                            <option value="King Hall">King Hall</option>
+                            <option value="Klapper Hall">Klapper Hall</option>
+                            <option value="Music Building">Music Building</option>
+                            <option value="Powdermarker Hall">Powdermarker Hall</option>
+                            <option value="Rathaus Hall">Rathaus Hall</option>
+                            <option value="Remsen Hall">Remsen Hall</option>
+                            <option value="Rosenthal Library">Rosenthal Library</option>
+                            <option value="Science Building">Science Building</option>
+                            <option value="Student Union">Student Union</option>
+                            <option value="The Summit">The Summit</option>
+                        </select>    
+                        
                     </div>
-                    
+                    <div class = "form-group">
+                        <label for = "specific-location">Room Number</label>
+                        <input type="text" id="ticketInput-specficLocation" name="specific-location" placeholder="Where in the building should we deliver?" required>
+                    </div>
                     <div class="form-group">
                         <label for="food-spot">Food Location</label>
                         <select id="ticketInput-orderLocation" name="food-spot" required>
@@ -184,7 +212,7 @@
 
                     <div class="form-group">
                         <label for="profift">Payment to Dasher</label>
-                        <input type="text" id="ticketInput-profit" name="profit" placeholder="How much will you tip the dasher for the delievery?" required>
+                        <input type="text" id="ticketInput-profit" name="profit" placeholder="How much will you tip the dasher for the delivery?" required>
                     </div>
                     
                     <button type="submit" class="order-submit" id = "ticketInput-submit">Place Order</button>
