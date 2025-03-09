@@ -16,6 +16,16 @@ body {
     justify-content: center;
     align-items: center;
 }
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); 
+    z-index: -1; 
+  }
 
 .main-container {
     display: flex;
@@ -28,7 +38,7 @@ body {
 
 .navbar {
     display: flex;
-    top: 0;
+    top: 1rem;
     position: absolute;
     width: 100%;
     max-width: 1200px;
@@ -57,12 +67,14 @@ body {
 }
 
 #sign-out {
+    width: 100%;
     display: none;
 }
 
 .main-buttons {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0rem;
 }
 
 .main-buttons button {
@@ -77,11 +89,52 @@ body {
     text-decoration: none;
 }
 
+.nav-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nav-buttons button {
+    border-radius: 2em;
+    border: 1px solid black;
+    padding: 0.75em 2em;
+    background-color: black;
+    color: white;
+    font-size: clamp(0.8rem, 1vw, 1rem);
+    font-family: 'Inter';
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-buttons button:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: white;
+    color: black;
+}
+
+.navs-buttons button:not(:hover){
+    transition: 0.5s;
+    background-color: black;
+    color: white;
+}
+
 a{
     text-decoration: none;
 }
 
 #enter {
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    font-family: 'Inter';
+    font-weight: 700;
+    padding: 0.75em 1em;
+    text-decoration: none;
+    border-radius: 2em;
+    align-items: center;
+    justify-content: center;
     display: none;
 }
 
@@ -105,7 +158,7 @@ a{
     /* border: 2px solid black; */
     width: 100%;
     max-width: 1200px;
-    margin-top: 80px; /* was 80 */
+    margin-top: 180px; /* was 80 */
     padding: 2rem 1rem;
     background-color: white;
     border-radius: 5em;
@@ -126,7 +179,7 @@ a{
 
 .welcome img {
     width: 100%;
-    max-width: 650px;
+    max-width: 750px;
 }
 
 .welcome .red {
@@ -139,8 +192,11 @@ a{
 }
 
 #landing-buttons {
-    gap: 3em;
+    gap: 0rem;
     padding: 1.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #landing-buttons button {
@@ -157,6 +213,11 @@ a{
     transition: 0.5s;
     background-color: #E3242B;
     color: white;
+}
+
+.top-buttons {
+    display: inline-flex;
+    gap: 2em;
 }
 
 

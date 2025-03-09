@@ -6,11 +6,13 @@
 }
 
 body {
+    font-family: 'Inter', sans-serif;
     display: flex;
     height: 100vh;
+    background-image: url(https://cdn.dribbble.com/userupload/20256996/file/original-928bbc129c2655700e6c045af03eaf1c.gif);
     overflow: hidden;
-}
-
+} 
+    
 .map-container {
     flex: 1;
     background-color: #f5f5f5;
@@ -24,14 +26,6 @@ body {
     object-fit: cover;
 }
 
-.logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    max-width: 120px;
-    z-index: 10; 
-}
-
 .ticket-container {
     flex: 1;
     background-color: #000;
@@ -43,19 +37,39 @@ body {
 
 .ticket-header {
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 50px;
+    font-size: 32px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .ticket-card {
     background-color: white;
     border-radius: 15px;
-    padding: 30px;
+    padding: 35px;
     margin: 20px 0;
     color: black;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+}
+/* .ticket-card p */
+.ticketOutput{
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+    color: #333; 
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+.ticket-counter{
+    padding-top: 10px;
+    font-size: 15px;
+
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    gap:1em;
 }
 
 .ticket-info {
@@ -74,7 +88,7 @@ body {
 
 .no-tickets {
     color: #444;
-    font-size: 24px;
+    font-size: 30px;
     text-align: center;
     margin: auto;
 }
@@ -86,25 +100,34 @@ body {
     margin-top: 20px;
 }
 
-.btn {
+.btn, .accept-order, .decline-order {
+    display: flex;
     padding: 15px;
     border-radius: 10px;
     border: none;
     color: white;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
 }
 
-.btn-accept {
+.btn-accept, .accept-order {
     background-color: #6ba368;
 }
-
-.btn-decline {
-    background-color: #a15b43;
+.btn-accept:hover, .accept-order:hover {
+    background-color: #5a8b58; /* Darker green */
 }
 
+.btn-decline, .decline-order {
+    background-color: #a15b43;
+}
+.btn-decline:hover, .decline-order:hover {
+    background-color: #8b4e3a; /* Darker red */
+}
 
 @media (max-width: 768px) {
     body {
