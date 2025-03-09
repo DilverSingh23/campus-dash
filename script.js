@@ -19,6 +19,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Global variable to store user role
+let map;
 let role = "";
 
  const getUserRole = async (uid) => {
@@ -248,7 +249,6 @@ if (orderForm) {
         status: status,
         createdAt: serverTimestamp()
       });
-      
       console.log("Order submitted successfully");
       orderForm.reset();
       alert("Order submitted successfully!");
@@ -259,8 +259,19 @@ if (orderForm) {
   });
 }
 
+// Fetching and Displaying pending tickets for dasher.html
 const fetchAndDisplayPendingTickets = async () => {
   try {
+    const dMap = document.getElementById('d-map');
+    if (dMap) {
+      map = L.map('d-map', {
+        scrollWheelZoom: false
+      }).setView([40.7363, -73.8176], 17); // Queens College coordinates
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+    }
+
     const ticketsRef = collection(db, "tickets");
 
     // Query Firestore for pending AND in-progress tickets
@@ -352,6 +363,41 @@ const fetchAndDisplayPendingTickets = async () => {
       }
     };
 
+    const locationMap = new Map([
+      ["Alumni Hall", [40.736759197800446, -73.81776297729851]],
+      ["Campbell Dome", [40.736200638300275, -73.81836545105936]],
+      ["Colden Auditorium", [40.7382650976061, -73.8159351546978]],
+      ["Colwin Hall", [40.73498891913439, -73.8174995895732]],
+      ["Delany Hall", [40.734908538882834, -73.81688276967381]],
+      ["Dining Hall", [40.737053504872534, -73.81745882942138]],
+      ["FitzGerald Gym", [40.73782084892258, -73.81959422148282]],
+      ["Frese Hall", [40.735701243017004, -73.81729760815095]],
+      ["Goldstein Theatre", [40.73782070576673, -73.81526905488785]],
+      ["Honors Hall", [40.734448976779476, -73.8185331270404]],
+      ["Jefferson Hall", [40.73519418629525, -73.8161509751362]],
+      ["Kiely Hall", [40.73598670643268, -73.81595348050523]],
+      ["King Hall", [40.73698666611463, -73.81530492145079]],
+      ["Klapper Hall", [40.73625173606999, -73.81724925162135]],
+      ["Music Building", [40.737966132533366, -73.81699714486197]],
+      ["Powdermaker Hall", [40.73600261747065, -73.81905762660504]],
+      ["Rathaus Hall", [40.73742615613944, -73.81651991872204]],
+      ["Remsen Hall", [40.734858070410645, -73.81886578566898]],
+      ["Rosenthal Library", [40.73638881670385, -73.82004380236624]],
+      ["Science Building", [40.73496605886057, -73.82035135056574]],
+      ["Student Union", [40.73431896959577, -73.81629983799486]],
+      ["The Summit", [40.73713750465218, -73.81934991162076]],
+      ["Science Building Cafe", [40.73527085920169, -73.8202619365584]],
+      ["QC Campus Eats", [40.73724379113104, -73.81711906215641]],
+      ["Mama's Kitchen", [40.73724379113104, -73.81711906215641]],
+      ["Taiwanese Yummy", [40.73724379113104, -73.81711906215641]],
+      ["Reem’s Grill House", [40.73724379113104, -73.81711906215641]],
+      ["Tealicious", [40.73724379113104, -73.81711906215641]],
+      ["Halal Food Truck", [40.73559073723301, -73.81691408373005]],
+      ["Mr. Sandwich Food Truck", [40.73559073723301, -73.81691408373005]],
+      ["Empanada Food Truck", [40.73559073723301, -73.81691408373005]],
+      ["Waffe & Dingles Food Cart", [40.7355761091673, -73.81935154509246]]
+  ]);
+
     // Function to handle accepting an order
     const handleAccept = async (ticketId) => {
       try {
@@ -372,6 +418,7 @@ const fetchAndDisplayPendingTickets = async () => {
           updatedTicket.status = "in-progress";
           // Re-display the updated ticket
           displayTicket(updatedTicket);
+          showMarkers(updatedTicket);
         }
 
       } catch (error) {
@@ -379,6 +426,40 @@ const fetchAndDisplayPendingTickets = async () => {
         alert("Failed to accept the order. Please try again.");
       }
     };
+
+    const showMarkers = (ticket) => {
+      if (!map) return; // Safety check
+      
+      const orderCoords = locationMap.get(ticket.orderLocation);
+      const deliveryCoords = locationMap.get(ticket.deliveryLocation);
+      
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          map.removeLayer(layer);
+        }
+      });
+      
+      if (orderCoords) {
+        const orderMarker = L.marker(orderCoords).addTo(map);
+        orderMarker.bindPopup(`Pickup: ${ticket.orderLocation}`)
+      }
+      
+      if (deliveryCoords) {
+        const deliveryMarker = L.marker(deliveryCoords).addTo(map);
+        deliveryMarker.bindPopup(`Delivery: ${ticket.deliveryLocation}`)
+      }
+      
+      if (orderCoords && deliveryCoords) {
+        const bounds = L.latLngBounds([orderCoords, deliveryCoords]);
+        map.fitBounds(bounds, { padding: [50, 50] });
+      }
+
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          layer.openPopup();
+        }
+       });
+    }
 
     // Function to handle completing an order
     const handleComplete = async (ticketId) => {
@@ -393,6 +474,8 @@ const fetchAndDisplayPendingTickets = async () => {
         });
 
         console.log(`Order ${ticketId} marked as 'completed'`);
+        resetMap();
+
 
         // Remove completed ticket from local array
         tickets = tickets.filter(t => t.id !== ticketId);
@@ -409,6 +492,19 @@ const fetchAndDisplayPendingTickets = async () => {
         alert("Failed to complete the order. Please try again.");
       }
     };
+    // Function to reset the map to its initial state
+    const resetMap = () => {
+      if (!map) return;
+      
+      // Remove all markers
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+          map.removeLayer(layer);
+        }
+      });
+    // Reset view to Queens College coordinates with default zoom
+      map.setView([40.7363, -73.8176], 17);
+    }
 
     // Display the first ticket
     displayTicket(tickets[0]);
@@ -421,110 +517,3 @@ const fetchAndDisplayPendingTickets = async () => {
 
 // Call function when page loads
 document.addEventListener("DOMContentLoaded", fetchAndDisplayPendingTickets);
-
-
-
-
-
-/*
-// Function to fetch and display pending tickets
-const fetchAndDisplayPendingTickets = async () => {
-  try {
-      const ticketsRef = collection(db, "tickets");
-
-      const q = query(ticketsRef, where("status", "==", "Pending"));
-      const querySnapshot = await getDocs(q);
-
-      const ticketDisplay = document.getElementById("ticket-display");
-
-      let pendingTickets = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data()
-      }));
-
-      if (pendingTickets.length === 0) {
-          ticketDisplay.innerHTML = "<p>No active orders at the moment.</p>";
-          return;
-      }
-
-      let currentTicketIndex = 0;
-
-      // Function to display the current ticket
-      const displayCurrentTicket = () => {
-          ticketDisplay.innerHTML = "";
-
-          if (currentTicketIndex >= pendingTickets.length) {
-              ticketDisplay.innerHTML = "<p>No more pending orders to review.</p>";
-              return;
-          }
-
-          const ticket = pendingTickets[currentTicketIndex];
-
-          // Create ticket container
-          const ticketDiv = document.createElement("div");
-          ticketDiv.classList.add("ticket-item");
-
-          // Populate ticket details
-          ticketDiv.innerHTML = `
-              <p class="ticketOutput"><strong>Customer Name:</strong> ${ticket.name}</p>
-              <p class="ticketOutput"><strong>Customer Contact:</strong> ${ticket.contact}</p>
-              <p class="ticketOutput"><strong>Delivery Location on Campus:</strong> ${ticket.deliveryLocation}</p>
-              <p class="ticketOutput"><strong>Food Pickup Location:</strong> ${ticket.orderLocation}</p>
-              <p class="ticketOutput"><strong>Order Details:</strong> ${ticket.order}</p>
-              <p class="ticketOutput"><strong>Payment:</strong> $${ticket.profit}</p>
-              <div class="button-container">
-                  <button class="accept-order">Accept Order</button>
-                  <button class="decline-order">Decline Order</button>
-              </div>
-          `;  
-
-          // Append to display container
-          ticketDisplay.appendChild(ticketDiv);
-
-          // Add event listeners to buttons
-          ticketDisplay.querySelector(".accept-order").addEventListener("click", () => handleAccept(ticket.id));
-          ticketDisplay.querySelector(".decline-order").addEventListener("click", () => handleDecline());
-      };
-
-      // Function to handle accepting an order
-      const handleAccept = async (ticketId) => {
-          try {
-              // Update the status in Firestore
-              const ticketRef = doc(db, "tickets", ticketId);
-              await updateDoc(ticketRef, {
-                  status: "accepted",
-                  acceptedAt: new Date()
-              });
-
-              console.log("Order accepted:", ticketId);
-
-              // Remove accepted ticket from the array and re-render
-              pendingTickets = pendingTickets.filter(ticket => ticket.id !== ticketId);
-              displayCurrentTicket();
-          } catch (error) {
-              console.error("Error accepting order:", error);
-              alert("Failed to accept the order. Please try again.");
-          }
-      };
-
-      // Function to handle declining an order (removes from the list)
-      const handleDecline = () => {
-          console.log("Order declined/skipped");
-          
-          // Remove declined ticket from array and re-render
-          pendingTickets.splice(currentTicketIndex, 1);
-          displayCurrentTicket();
-      };
-
-      // Display the first ticket
-      displayCurrentTicket();
-
-  } catch (error) {
-      console.error("Error fetching pending tickets:", error);
-      document.getElementById("ticket-display").innerHTML = "<p>Error loading orders.</p>";
-  }
-};
-
-// Call function when page loads
-document.addEventListener("DOMContentLoaded", fetchAndDisplayPendingTickets);
-*/

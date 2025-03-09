@@ -125,7 +125,8 @@ body::before {
     align-items: center;
 }
 
-#map {
+
+#d-map{
     height: 600px;
     width: 620px;
     cursor: default;

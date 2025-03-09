@@ -6,7 +6,7 @@
     <link href = "customer.css" rel = "stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> 
-    <title>Customer Dashboard</title>
+    <title>CampusDash - Customer Dashboard</title>
 </head>
 <body>
     <div class = "main-customer">
@@ -174,7 +174,7 @@
                             <option value="King Hall">King Hall</option>
                             <option value="Klapper Hall">Klapper Hall</option>
                             <option value="Music Building">Music Building</option>
-                            <option value="Powdermarker Hall">Powdermarker Hall</option>
+                            <option value="Powdermaker Hall">Powdermarker Hall</option>
                             <option value="Rathaus Hall">Rathaus Hall</option>
                             <option value="Remsen Hall">Remsen Hall</option>
                             <option value="Rosenthal Library">Rosenthal Library</option>
@@ -220,6 +220,9 @@
             </div>
         </div>
     </div>
+    <div id="order-status-container" style="display: none;">
+        <!-- Status will be displayed here by JavaScript -->
+      </div>
     <script src ="script.js" type = "module"></script>
     <script src="customer.js"></script>
 </body>
