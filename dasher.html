@@ -4,21 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Delivery System</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="dasher.css">
 </head>
 <body>
-    <div class="map-container">
-        <img src="https://www.qc.cuny.edu/a/wp-content/uploads/sites/97/2022/03/Queens_College_2D_Map_2024_fall.jpg" alt="Queens College Campus Map">
-    </div>
-    
-    <div class="ticket-container">
-        <h1 class="ticket-header">View Active Order(s):</h1>
+    <div class="main-dasher">
+        <div class="navbar">
+            <div class="left">
+                <div class="logo"><a href="index.html"><img src="/images/CampusDashLogo.png"></a></div>
+            </div>
+            <div class="right">
+                <div class="main-buttons">    
+                    <a href="index.html"><button class="log-in">Sign Out</button></a>
+                </div>
+            </div>
+        </div>
         
-        <div id="ticket-display" class="ticket-card">
-            <!-- Dynamic content will be inserted here -->
+        <div class="dasher-content">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            
+            <div class="ticket-container">
+                <h1 class="ticket-header">View Active Order(s):</h1>
+                
+                <div id="ticket-display" class="ticket-card">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="script.js" type ="module"></script>
+    <script src="script.js" type="module"></script>
+    <script src="dasher.js"></script>
 </body>
 </html>
