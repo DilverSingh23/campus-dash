@@ -14,7 +14,7 @@ CampusDash is our **MVP** submission for **Hack Knight Spring 2025**, designed t
 5. Track your order and receive **real-time status updates** when a delivery is accepted.  
 
 ### 🚴 **For Dashers (Making Deliveries)**  
-1. Sign in and choose the **"Make a Delivery"** option.  
+1. Sign in and choose the **"Make a Delivery"** option
 2. Receive **new ticket notifications** and claim an order on a **first-come, first-served** basis.  
 3. Get **customer details** (name, contact, location) and **order information**.  
 4. Complete the delivery and receive a **direct tip** from the customer.  
