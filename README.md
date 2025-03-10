@@ -1,6 +1,6 @@
 # 🚀 CampusDash  
 
-CampusDash is our **MVP** submission for **Hack Knight Spring 2025**, designed to make food delivery on **Queens College campus** more convenient and affordable. This platform empowers students and faculty to order food from on-campus spots and have it delivered by fellow students looking to earn extra cash.  
+CampusDash is our **MVP** submission for **Hack Knight Spring 2025**, designed to make food delivery on **Queens College campus** more convenient and affordable for staff and students. This platform empowers students and faculty to order food from on-campus spots and have it delivered by fellow students looking to earn extra cash.  
 
 ---
 
