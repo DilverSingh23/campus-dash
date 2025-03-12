@@ -4,14 +4,8 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signOut, s
 import { getFirestore, collection, doc, getDocs, addDoc, updateDoc, serverTimestamp, query, where} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCR7eWetjuJOIewzjgIYlvNGh95CFYrWZ8",
-  authDomain: "campusdash-4f77d.firebaseapp.com",
-  projectId: "campusdash-4f77d",
-  storageBucket: "campusdash-4f77d.firebasestorage.app",
-  messagingSenderId: "938612318478",
-  appId: "1:938612318478:web:2b074652fc377a1122b75f"
-};
+const response = await fetch('/api/server');
+const firebaseConfig = await response.json();
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig); 
